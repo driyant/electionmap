@@ -30,19 +30,26 @@ secondCandidate.electionResults[4] = 38;
 firstCandidate.electionResults[43] = 11;
 secondCandidate.electionResults[43] = 27
 
+// Declare the winner 
+let getWinner = '';
+if(firstCandidate.totalVotes > secondCandidate.totalVotes) {
+    getWinner = firstCandidate.name;
+    console.log(getWinner);
+} else if (firstCandidate.totalVotes < secondCandidate.totalVotes) {
+    getWinner = secondCandidate.name;
+    console.log(getWinner);
+}
+
+// Assign Winnder of Erach state
+const setStateResults = (state) => {
+    theState[state].winner = null;
+    if(firstCandidate.electionResults[state] > secondCandidate.electionResults[state]) {
+        theState[state].winner = firstCandidate;
+    } else {
+        theState[state].winner = secondCandidate;
+    }
+}
+
 // Make Tally Up of electionResult
 firstCandidate.tallyUpResults();
 secondCandidate.tallyUpResults();
-// console.log(firstCandidate.totalVotes);
-// console.log(secondCandidate.totalVotes);
-
-// Declare the winner 
-let winner = '';
-if(firstCandidate.totalVotes > secondCandidate.totalVotes) {
-    winner = firstCandidate.name;
-    console.log(winner);
-} else if (firstCandidate.totalVotes < secondCandidate.totalVotes) {
-    winner = secondCandidate.name;
-    console.log(winner);
-}
-

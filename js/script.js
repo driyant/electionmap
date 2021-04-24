@@ -30,18 +30,20 @@ secondCandidate.electionResults[4] = 38;
 firstCandidate.electionResults[43] = 11;
 secondCandidate.electionResults[43] = 27
 
-// Declare the winner 
-let getWinner = '';
-if(firstCandidate.totalVotes > secondCandidate.totalVotes) {
-    getWinner = firstCandidate.name;
-    console.log(getWinner);
-} else if (firstCandidate.totalVotes < secondCandidate.totalVotes) {
-    getWinner = secondCandidate.name;
-    console.log(getWinner);
-}
+
 
 // Assign Winnder of Erach state
 const setStateResults = (state) => {
+    // Declare the winner 
+    let getWinner = '';
+    if(firstCandidate.totalVotes > secondCandidate.totalVotes) {
+        getWinner = firstCandidate.name;
+        console.log(getWinner);
+    } else if (firstCandidate.totalVotes < secondCandidate.totalVotes) {
+        getWinner = secondCandidate.name;
+        console.log(getWinner);
+    }
+
     theStates[state].winner = null;
     if(firstCandidate.electionResults[state] > secondCandidate.electionResults[state]) {
         theStates[state].winner = firstCandidate;
@@ -55,6 +57,17 @@ const setStateResults = (state) => {
     } else {
         theStates[state].rgbColor = [11,32,57];
     }
+
+   // Populate table announcing the Winner
+    const getResultTable = document.querySelector("#countryResults");
+    const getResultTableRow = getResultTable.children[0].children[0];
+    // Accessing Row
+    getResultTableRow.children[0].innerText = firstCandidate.name;
+    getResultTableRow.children[1].innerText = firstCandidate.totalVotes;
+    getResultTableRow.children[2].innerText = secondCandidate.name;
+    getResultTableRow.children[3].innerText = secondCandidate.totalVotes;
+    getResultTableRow.children[5].innerText = getWinner;
+  
 }
 
 // Make Tally Up of electionResult

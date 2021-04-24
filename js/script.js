@@ -85,7 +85,7 @@ const setStateResults = (state) => {
     setFirstCandidateResult.innerText = firstCandidate.electionResults[state];
     setSecondCandidateName.innerText = secondCandidate.name;
     setSecondCandidateResult.innerText = secondCandidate.electionResults[state];
-    
+    setWinner.innerText = theStates[state].winner.name;
 }
 
 // Make Tally Up of electionResult

@@ -38,10 +38,8 @@ const setStateResults = (state) => {
     let getWinner = '';
     if(firstCandidate.totalVotes > secondCandidate.totalVotes) {
         getWinner = firstCandidate.name;
-        console.log(getWinner);
     } else if (firstCandidate.totalVotes < secondCandidate.totalVotes) {
         getWinner = secondCandidate.name;
-        console.log(getWinner);
     }
 
     theStates[state].winner = null;
@@ -67,7 +65,27 @@ const setStateResults = (state) => {
     getResultTableRow.children[2].innerText = secondCandidate.name;
     getResultTableRow.children[3].innerText = secondCandidate.totalVotes;
     getResultTableRow.children[5].innerText = getWinner;
-  
+
+    // Populate the State Result Table
+    const getResultTableInfo = document.querySelector("#stateResults");
+    const getHeader = getResultTableInfo.children[0];
+    const getBody = getResultTableInfo.children[1];
+    const setHeaderName = getHeader.children[0].children[0];
+    const setHeaderAbbr = getHeader.children[0].children[1];
+    const setFirstCandidateName = getBody.children[0].children[0];
+    const setFirstCandidateResult = getBody.children[0].children[1];
+    const setSecondCandidateName = getBody.children[1].children[0];
+    const setSecondCandidateResult = getBody.children[1].children[1];
+    const setWinner = getBody.children[2].children[1];
+
+    // Set text
+    setHeaderName.innerText =  theStates[state].nameFull;
+    setHeaderAbbr.innerText = `(` +theStates[state].nameAbbrev + `)`;
+    setFirstCandidateName.innerText = firstCandidate.name;
+    setFirstCandidateResult.innerText = firstCandidate.electionResults[state];
+    setSecondCandidateName.innerText = secondCandidate.name;
+    setSecondCandidateResult.innerText = secondCandidate.electionResults[state];
+    
 }
 
 // Make Tally Up of electionResult

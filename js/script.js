@@ -1,8 +1,9 @@
 // Create politician obj
-const candidates = (candidateName) => {
+const candidates = (candidateName, partyColor) => {
     const politician = {
         name : candidateName,
         electionResults : null,
+        partyColor : partyColor,
         totalVotes : 0,
         tallyUpResults : function() {
             for(result of this.electionResults) {
@@ -14,8 +15,8 @@ const candidates = (candidateName) => {
 }
 
 // Create 2 politicians
-let firstCandidate = candidates("Jubilee");
-let secondCandidate = candidates("Austeen");
+let firstCandidate = candidates("Jubilee", [132, 17, 11]);
+let secondCandidate = candidates("Austeen", [245, 141, 136]);
 
 // Add electionResult array
 firstCandidate.electionResults = [5, 1, 7, 2, 33, 6, 4, 2, 1, 14, 8, 3, 1, 11, 11, 0, 5, 3, 3, 3, 7, 4, 8, 9, 3, 7, 2, 2, 4, 2, 8, 3, 15, 15, 2, 12, 0, 4, 13, 1, 3, 2, 8, 21, 3, 2, 11, 1, 3, 7, 2];

@@ -5,12 +5,9 @@ const candidates = (candidateName) => {
         electionResults : null,
         totalVotes : 0,
         tallyUpResults : function() {
-            let resultVotes = this.totalVotes;
-            const resultElections = this.electionResults
-            for(let result of resultElections) {
-                resultVotes = resultVotes + result;
+            for(result of this.electionResults) {
+                this.totalVotes += result;
             }
-            return resultVotes;
         }
     };
     return politician;
@@ -35,3 +32,16 @@ secondCandidate.electionResults[43] = 27
 // Make Tally Up of electionResult
 firstCandidate.tallyUpResults();
 secondCandidate.tallyUpResults();
+// console.log(firstCandidate.totalVotes);
+// console.log(secondCandidate.totalVotes);
+
+// Declare the winner 
+let winner = '';
+if(firstCandidate.totalVotes > secondCandidate.totalVotes) {
+    winner = firstCandidate.name;
+    console.log(winner);
+} else if (firstCandidate.totalVotes < secondCandidate.totalVotes) {
+    winner = secondCandidate.name;
+    console.log(winner);
+}
+

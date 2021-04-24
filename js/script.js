@@ -42,11 +42,18 @@ if(firstCandidate.totalVotes > secondCandidate.totalVotes) {
 
 // Assign Winnder of Erach state
 const setStateResults = (state) => {
-    theState[state].winner = null;
+    theStates[state].winner = null;
     if(firstCandidate.electionResults[state] > secondCandidate.electionResults[state]) {
-        theState[state].winner = firstCandidate;
+        theStates[state].winner = firstCandidate;
     } else {
-        theState[state].winner = secondCandidate;
+        theStates[state].winner = secondCandidate;
+    }
+
+    let theWinnerState = theStates[state].winner;
+    if(theWinnerState) {
+        theStates[state].rgbColor = theWinnerState.partyColor;
+    } else {
+        theStates[state].rgbColor = [11,32,57];
     }
 }
 
